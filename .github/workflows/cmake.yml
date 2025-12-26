@@ -13,8 +13,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./myProject
-    # --------------------------
+        working-directory: ./Task_1_1
 
     steps:
     - uses: actions/checkout@v3
