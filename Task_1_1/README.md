@@ -1,3 +1,0 @@
-# IndustrialProgramming
-
-Первое задание

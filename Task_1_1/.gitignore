@@ -1,0 +1,8 @@
+build/
+out/
+bin/
+lib/
+.cache
+*.user
+*.swp
+test_results.xml
