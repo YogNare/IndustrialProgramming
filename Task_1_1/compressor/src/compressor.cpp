@@ -40,7 +40,7 @@ int main(int argc, char* argv[]) {
     }
 
     for (int i = 0; i < outputBuf.size; ++i) {
-        std::fprintf(stdout, "%0.2hhx", static_cast<unsigned char>(outputBuf.data[i]));
+        std::fprintf(stdout, "%02hhx", static_cast<unsigned char>(outputBuf.data[i]));
     }
     std::fprintf(stdout, "\n");
 
