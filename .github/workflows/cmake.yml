@@ -1,0 +1,43 @@
+name: CMake Build and Test
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./Task_1_1
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Conan
+      run: |
+        pip install conan
+        conan profile detect --force
+
+    - name: Install dependencies via Conan
+      run: |
+        conan install . --output-folder=build --build=missing -s compiler.cppstd=20
+
+    - name: Configure CMake
+      run: |
+        cmake --preset conan-release
+    - name: Build
+      run: cmake --build --preset conan-release
+
+    - name: Test
+      run: |
+        cd build
+        ctest -C Release --output-on-failure
+
+    - name: Check Test Results XML
+      run: |
+        ls -l build/test_results.xml
